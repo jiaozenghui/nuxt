@@ -40,8 +40,6 @@ export const actions = {
 
 export const mutations = {
   setData(state, payload) {
-    console.log('mutations')
-    console.log(payload)
     state[payload.key] = payload.value
   }
 }
