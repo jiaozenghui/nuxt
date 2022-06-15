@@ -50,8 +50,8 @@ export default {
     baseURL: '/'
   },
   proxy: {
-    '/user/get': {
-      target: 'http://localhost:3025',
+    '/articles': {
+      target: 'http://frontendlife.cn',
       changeOrigin: true
     }
   },

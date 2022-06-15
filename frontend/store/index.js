@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 
 const isServer = Vue.prototype.$isServer || process.server
-const baseURL = isServer ? `${process.env.DOMAIN}/api` : `${window.location.origin}/api`
+const baseURL = 'http://localhost:3000'
 const ajax = axios.create({
   baseURL,
   responseType: 'json',
@@ -12,7 +12,7 @@ const ajax = axios.create({
 ajax.interceptors.response.use((response) => {
   const { data } = response
   if (data && !isServer && !data.success) {
-    alert(data.message)
+    console.log(data)
   }
   return data
 }, error => Promise.reject(error))
@@ -28,17 +28,21 @@ export const actions = {
    * category api
    */
   async getCategories({ commit, state }) {
-    const { token } = state
-    const { data } = await ajax.get('/user/get', {
-      headers: {
-        token,
-      },
+    const { result } = await ajax.get('/articles', {
     })
     commit('setData', {
       key: 'categories',
-      value: data,
+      value: result,
     })
-    return data
+    return result
+  }
+}
+
+export const mutations = {
+  setData(state, payload) {
+    console.log('mutations')
+    console.log(payload)
+    state[payload.key] = payload.value
   }
 }
 

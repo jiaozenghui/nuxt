@@ -1,7 +1,9 @@
 <template>
   <div>
-    <Tutorial />
-    <div v-for="item of categoryFilter" :key="item.title"></div>
+    <div v-for="item of categoryFilter" :key="item._id">
+      <span>{{item.title}}</span>
+      <p>{{item.abstract}}</p>
+    </div>
   </div>
 </template>
 
@@ -13,10 +15,11 @@ export default Vue.extend({
   computed: {
     ...mapState(['categories']),
     categoryFilter() {
-      return this.categories.filter(i => i.title !== '默认分类')
+      return this.categories
     },
   },
   mounted() {
+    console.log('mounted')
     this.getCategories()
   },
   methods: {
