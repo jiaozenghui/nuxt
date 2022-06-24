@@ -1,24 +1,38 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: 'Jzh个人博客',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description',
+       content: "Jzh个人博客，nodejs学习分享，js,html,css,angularjs,vue框架的学习和分享，彩铅学习分享"},
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'keywords', content: '个人博客,Jzh个人博客,js,css,前端技术，彩铅' },
+      { name: 'viewport', content: 'width=device-width, minimum-scale=1.0, maximum-scale=1.0' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'images/favicon.ico' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/static/styles/base.css',
+    '~/static/styles/iconfont.css',
+    {src:'~/static/styles/main.scss', lang: 'scss'},
+    {src:'~/static/styles/variables.scss', lang: 'scss'},
+    {src:'~/static/styles/input.scss', lang: 'scss'}
   ],
 
+  styleResources: {
+    scss: [
+      '~/static/styles/variables.scss',
+      '~/static/styles/main.scss'
+    ]
+  },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '~/static/styles/iconfont/iconfont.js', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -29,9 +43,7 @@ export default {
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
-    '@nuxtjs/stylelint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/stylelint-module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -40,7 +52,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -50,8 +63,8 @@ export default {
     baseURL: '/'
   },
   proxy: {
-    '/articles': {
-      target: 'http://frontendlife.cn',
+    '/projects': {
+      target: 'http://localhost:3001',
       changeOrigin: true
     }
   },

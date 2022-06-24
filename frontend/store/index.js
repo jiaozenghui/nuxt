@@ -20,6 +20,12 @@ ajax.interceptors.response.use((response) => {
 
 export const actions = {
   async nuxtServerInit({ commit, dispatch }, { req, res }) {
+    if (req.session && req.session.user) {
+      commit('setData', {
+        key: 'user',
+        value: req.session.user
+      })
+    }
     await Promise.all([
       dispatch('getCategories')
     ])
@@ -28,7 +34,7 @@ export const actions = {
    * category api
    */
   async getCategories({ commit, state }) {
-    const { result } = await ajax.get('/articles', {
+    const { result } = await ajax.get('/projects', {
     })
     commit('setData', {
       key: 'categories',

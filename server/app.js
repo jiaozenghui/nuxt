@@ -43,13 +43,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 require('./config/routes')(app)
 
-var logPath = 'app/public/logs/'
+//require('./config/routes')(app)
+
+var logPath = 'logs/'
 var logFile = null;
 var logTime = null;
-console.log = function () {
+/* console.log = function () {
     var time = date.format(new Date(), 'yyyy-MM-dd_HH:mm:ss');
     var foldName = time.substr(0, 10);
     if (logTime != foldName) {
@@ -67,7 +68,7 @@ console.log = function () {
         })
     }
     logFile.write('【' + time + '】' + arguments[0] + '\r\n')
-}
+} */
 
 
 module.exports = app;
