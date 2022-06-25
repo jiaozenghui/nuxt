@@ -1,0 +1,11 @@
+@mixin background-color() {
+$colors: #8A9B0F, #EB6841, #3FB8AF, #FE4365, #FC9D9A, #EDC951, #C8C8A9, #83AF9B, #036564, #3299BB; 
+
+
+@for $i from 1 through length($colors) { 
+        li:nth-child(#{length($colors)}n+#{$i}) {
+            background: lighten(nth($colors, random(9)), 10%); 
+        } 
+    } 
+}
+  

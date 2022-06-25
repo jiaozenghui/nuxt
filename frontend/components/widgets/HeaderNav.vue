@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav id="topnav">
-      <div class="logo_div"></div>
+      <div class="logo_div">Jzh个人博客</div>
       <div class="topnav_div">
         <a href="/main">首页</a>
         <a href="/aboutme.html">关于我</a>
@@ -37,15 +37,16 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .logo_div {
   flex: 0 0 auto;
-  margin-right: 60px;
 }
 .topnav_div {
   height: 60px;
   flex: 1 1 auto;
   line-height: 60px;
+  margin-left: 2%;
   a {
     color: $fontColor;
     padding: 0 20px;
+    font-size: 16px;
   }
 }
 .search_div {
