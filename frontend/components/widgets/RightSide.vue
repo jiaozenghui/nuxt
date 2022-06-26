@@ -64,10 +64,16 @@ export default Vue.extend({
                 width: 100px;
                 height: 100px;
                 margin-left: 15px;
+                transition: all 0.5s;
             }
             p {
                 margin-top: 15px;
                 flex: 0 1 auto;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
             }
             .autor {
                 span {
@@ -82,6 +88,9 @@ export default Vue.extend({
                 }
             }
         }
+    }
+    li:hover {
+        .article_img { transform: scale(1.1); opacity: 1 }
     }
 }
 </style>

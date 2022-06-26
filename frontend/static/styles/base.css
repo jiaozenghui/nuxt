@@ -15,9 +15,47 @@ a:hover { text-decoration: none; }
 header { position: relative; box-shadow: -2px -1px 5px #e8e8e8; background-color: #fdfdfd; }
 header h1 { padding: 15px 0 0 80px; font-size: 22px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; }
 header h2 { margin: 20px 80px; color: #8e8d8d }
-.logo_div {width: 100px; height: 60px;     width: 24%;line-height: 60px;font-size: 22px;color: #555;}
+.logo_div {height: 60px;width: 24%;line-height: 60px;font-size: 22px;color: #555;}
 nav {height: 60px; align-items: center; width: 1200px; margin: 0 auto; display: flex;}
-.content {margin: 20px auto; display: flex; width: 1200px; justify-content: space-between;}
+.content { padding-top: 80px; margin: 0 auto 20px; display: flex; width: 1200px; justify-content: space-between;}
 .right-side{width: 74%;}
 .left-side{width: 24%;}
 
+::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    -webkit-border-radius: 0
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px
+}
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #b8b8b8;
+    -webkit-border-radius: 6px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    border: 2px solid #fff;
+    filter: alpha(opacity = 50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5
+}
+::-webkit-scrollbar-thumb:hover {
+    height: 50px;
+    background-color: #878987;
+    -webkit-border-radius: 6px
+}
+.menu_c {
+    padding: 15px 0;
+    cursor: pointer;
+}
+.menu_icon { display: none; position: relative; width: 30px; height: 5px; background-color: #92928c; cursor: pointer;}
+.menu_icon:before, .menu_icon:after { content: ''; display: block; width: 30px; height: 5px; position: absolute; background: #92928c; -webkit-transition-property: margin, -webkit-transform; transition-property: margin, -webkit-transform; transition-property: margin, transform; transition-property: margin, transform, -webkit-transform; -webkit-transition-duration: 300ms; transition-duration: 300ms; }
+.menu_icon:before { margin-top: -10px; }
+.menu_icon:after { margin-top: 10px; }
+.open .menu_icon {background: none; display: block;}
+.open .menu_icon:before { margin-top: 0; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.open .menu_icon:after { margin-top: 0; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
+.open .menu_icon:before, .open .menu_icon:after { content: ''; display: block; width: 30px; height: 5px; position: absolute; background: #92928c; }
+header {position: fixed;width: 100%;height: 60px;z-index: 999;}

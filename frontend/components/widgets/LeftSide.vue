@@ -2,7 +2,7 @@
     <div class="left-side">
         <div class="card">
             <h2 class="card_title">关于我</h2>
-            <div class="card_info">
+            <div class="card_info user_info">
                 <img class="photo" src="images/photos.png"/>
                 <p class="des">
                     Jzh，女，一个90后草根女站长！12年入行，从业已经有八九年的时间。想当年我还是一枚.net程序员，兴趣的驱使，我进化成为了一个前端程序猿
@@ -50,7 +50,16 @@
                 </ul>
             </div>
         </div>
-
+        <div class="card">
+            <h2 class="card_title">友情链接</h2>
+            <div class="card_info">
+                <ul class="ul_list link_ul">
+                    <a v-for="item of linkList" :key="item.url">
+                        {{item.title}}
+                    </a>
+                </ul>
+            </div>
+        </div>
 
     </div>
 </template>
@@ -81,6 +90,11 @@ export default Vue.extend({
                 {_id: '12', title: 'js学习', author: {name:'jzh'}, pv: 88, pc:8, createAt: '2022-06-21 23:06:57', abstract: '本地访问远程mongodb服务器时，访问不了， 在阿里云添加安全组规则开放出27017端口，还是不能访问，再排查是服务器防火墙没设置 firewall-cmd --zone=public --add-port=27017/tcp --permanent firewall-cmd --reload systemctl start firewalld.service'},
                 {_id: '13', title: '数据绑定', author: {name:'jzh'}, pv: 88, pc:8, createAt: '2022-06-21 23:06:57', abstract: '本地访问远程mongodb服务器时，访问不了， 在阿里云添加安全组规则开放出27017端口，还是不能访问，再排查是服务器防火墙没设置 firewall-cmd --zone=public --add-port=27017/tcp --permanent firewall-cmd --reload systemctl start firewalld.service'},
                 {_id: '14', title: '彩铅狗狗', author: {name:'jzh'}, pv: 88, pc:8, createAt: '2022-06-21 23:06:57', abstract: '本地访问远程mongodb服务器时，访问不了， 在阿里云添加安全组规则开放出27017端口，还是不能访问，再排查是服务器防火墙没设置 firewall-cmd --zone=public --add-port=27017/tcp --permanent firewall-cmd --reload systemctl start firewalld.service'},
+            ],
+            linkList: [
+                {title: 'Jzh个人博客博客', url: 'http://frontendlife.cn/'},
+                {title: '杨青青个人博客', url: 'https://www.yangqq.net/'},
+                {title: '徐靖峰', url: 'https://www.cnkirito.moe/'}
             ]
         }
     }
@@ -158,6 +172,14 @@ export default Vue.extend({
             box-shadow: 0 0 10px #ccc;
             transition: all .2s ease;
         }
+        .link_ul a {
+            margin: 5px 5px;
+            word-break: keep-all;
+            display: inline-block;
+        }
+    }
+    .user_info {
+        min-height: 100px;
     }
 }
 </style>

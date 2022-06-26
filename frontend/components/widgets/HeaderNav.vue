@@ -1,8 +1,11 @@
 <template>
   <header>
-    <nav id="topnav">
+    <nav id="topnav" :class="{open: isSw}">
+      <i class="menu_c" @click="isSw=!isSw">
+        <span class="menu_icon"></span>
+      </i>
       <div class="logo_div">Jzh个人博客</div>
-      <div class="topnav_div">
+      <div class="topnav_div" >
         <a href="/main">首页</a>
         <a href="/aboutme.html">关于我</a>
         <a href="life_diary.html">慢生活</a>
@@ -14,7 +17,6 @@
       <div class="search_div pull-right">
         <search-input></search-input>
       </div>
-
     </nav>
   </header>
 </template>
@@ -24,6 +26,11 @@ import { mapState } from 'vuex'
 import SearchInput from './SearchInput.vue'
 export default Vue.extend({
   name: 'HeaderNav',
+  data() {
+    return {
+      isSw: false
+    }
+  },
   components: {
     SearchInput
   },
@@ -52,4 +59,5 @@ export default Vue.extend({
 .search_div {
   flex: 0 0 auto;
 }
+
 </style>
