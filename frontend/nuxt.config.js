@@ -19,9 +19,7 @@ export default {
   css: [
     '~/static/styles/base.css',
     '~/static/styles/iconfont.css',
-    {src:'~/static/styles/main.scss', lang: 'scss'},
-    {src:'~/static/styles/variables.scss', lang: 'scss'},
-    {src:'~/static/styles/input.scss', lang: 'scss'}
+    {src:'~/static/styles/main.scss', lang: 'scss'}
   ],
 
   styleResources: {
