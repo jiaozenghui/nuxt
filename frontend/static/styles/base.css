@@ -16,8 +16,8 @@ header { position: relative; box-shadow: -2px -1px 5px #e8e8e8; background-color
 header h1 { padding: 15px 0 0 80px; font-size: 22px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; }
 header h2 { margin: 20px 80px; color: #8e8d8d }
 .logo_div {height: 60px;width: 24%;line-height: 60px;font-size: 22px;color: #555;}
-nav {height: 60px; align-items: center; width: 1000px; margin: 0 auto; display: flex;}
-.content { padding-top: 80px; margin: 0 auto 20px; display: flex; width: 1000px; justify-content: space-between;}
+nav {height: 60px; align-items: center; width: 1200px; margin: 0 auto; display: flex;}
+.content { padding-top: 80px; margin: 0 auto 20px; display: flex; width: 1200px; justify-content: space-between;}
 .right-side{width: 74%;}
 .left-side{width: 24%;}
 

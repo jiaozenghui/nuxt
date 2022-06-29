@@ -16,23 +16,35 @@ var jsonWrite = function (res, ret) {
 //sign up 
 exports.signup = function (req, res) {
   var _user = {
-    name: req.body.name,
+    name: req.body.username,
     password: req.body.password
   };
+
   User.find({name: _user.name}, function (err, users) {
     if (err) {
       console.log (err);
     }
 
     if (users.length >0) {
-      res.redirect('/login');
+      return jsonWrite(res, {
+        'success': false,
+         code: 409,
+        'result': err
+      });
     } else {
       var user = new User(_user);
       user.save(function(err, user) {
         if (err) {
-          console.log(err);
-        } 
-        res.redirect('/');
+          return jsonWrite(res, {
+            'success': false,
+            'result': err
+          });
+        }else {
+          return jsonWrite(res, {
+            'success': true,
+            'result': 'ok'
+          });
+        }
       });
     }
   })
@@ -61,29 +73,43 @@ exports.list = function(req, res) {
 //sign in 
 exports.signin = function (req, res) {
   var _user = {
-    name: req.body.name,
+    name: req.body.username,
     password: req.body.password
   };
   var userName = _user.name;
   var password = _user.password;
   User.findOne({name: userName}, function (err, user) {
     if (err) {
-      console.log(err);
+      return jsonWrite(res, {
+        'success': false,
+        'result': err
+      });
     }
     if (!user) {
-      return res.redirect('/signup');
+      return jsonWrite(res, {
+        'success': false,
+        'result': err
+      });
     }
     user.comparePassword(password, function (err, isMatch) {
       if (err) {
-        console.log(err);
+        return jsonWrite(res, {
+          'success': false,
+          'result': err
+        });
       }
       if (isMatch) {
         req.session.user = user;
-        console.log('Password is matched.');
-        return res.redirect('/');
+        return jsonWrite(res, {
+          'success': true,
+          user: user,
+          'result': 'ok'
+        });
       } else {
-        return res.redirect('/login');
-        console.log('Password is not matched.');
+        return jsonWrite(res, {
+          'success': false,
+          'result': 'password not is matched'
+        });
       }
     })
   });

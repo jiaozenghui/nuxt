@@ -19,7 +19,10 @@ ajax.interceptors.response.use((response) => {
 
 
 export const actions = {
-  async nuxtServerInit({ commit, dispatch }, { req, res }) {
+  async nuxtServerInit({ commit, dispatch }, { req, res, app }) {
+    console.log('session')
+    console.log(res.session)
+    console.log('end')
     if (req.session && req.session.user) {
       commit('setData', {
         key: 'user',
@@ -41,8 +44,31 @@ export const actions = {
       value: result,
     })
     return result
+  },
+  async signup({ commit, dispatch }, body) {
+    const result = await ajax.post('/user/signup', body)
+    return result
+  },
+  async login({ commit, dispatch }, body) {
+    const result = await ajax.post('/user/signin', body)
+    result.success == true &&commit('setData', {
+      key: 'user',
+      value: result.user,
+    })
+    return result
+  },
+  async logout({ commit }) {
+    await ajax.post('/logout')
+    // 清除token
+    commit('setData', {
+      key: 'token',
+      value: '',
+    })
   }
 }
+
+
+
 
 export const mutations = {
   setData(state, payload) {

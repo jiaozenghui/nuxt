@@ -3,3 +3,9 @@
 @import './input';
 @import './variables';
 $main-color: #1aad19;
+.page-enter-active, .page-leave-active {
+    transition: opacity .5s;
+  }
+  .page-enter, .page-leave-active {
+    opacity: 0;
+  }

@@ -21,7 +21,7 @@ export default {
     '~/static/styles/iconfont.css',
     {src:'~/static/styles/main.scss', lang: 'scss'}
   ],
-
+  loading: { color: '#2152F3' },
   styleResources: {
     scss: [
       '~/static/styles/variables.scss',
@@ -62,6 +62,10 @@ export default {
   },
   proxy: {
     '/projects': {
+      target: 'http://localhost:3001',
+      changeOrigin: true
+    },
+    '/user': {
       target: 'http://localhost:3001',
       changeOrigin: true
     }

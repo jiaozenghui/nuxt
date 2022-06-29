@@ -70,5 +70,4 @@ var logTime = null;
     logFile.write('【' + time + '】' + arguments[0] + '\r\n')
 } */
 
-
 module.exports = app;

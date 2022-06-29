@@ -1,10 +1,9 @@
 <template>
   <div>
     <header-nav></header-nav>
-    <nuxt />
     <div class="content">
       <left-side></left-side>
-      <right-side></right-side>
+      <nuxt />
     </div>
     <footer-container></footer-container>
   </div>

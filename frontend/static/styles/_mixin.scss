@@ -8,4 +8,20 @@ $colors: #8A9B0F, #EB6841, #3FB8AF, #FE4365, #FC9D9A, #EDC951, #C8C8A9, #83AF9B,
         } 
     } 
 }
+
+@mixin bodyStyle($isPassport) {
+    @if($isPassport == true) {
+        background: #fff;
+        background-attachment: fixed;
+        background: url(~/static/images/banner.jpg)no-repeat 0px 0px;
+        text-transform: uppercase;
+        background-size: 100%;
+        -webkit-background-size: 100%;
+        -o-background-size: 100%;
+        -moz-background-size: 100%;
+        -ms-background-size: 100%;
+    } @else if($isPassport == false){
+        background: #efefef;
+    }
+}
   
