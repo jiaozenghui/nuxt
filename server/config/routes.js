@@ -26,10 +26,10 @@ module.exports= function (app) {
 	app.post('/user/signup', User.signup);
 	app.post('/user/signin', User.signin);
 	app.get('/signout', User.signout);
-	app.get('/user/get',User.signinRequired, User.getUser)
+	app.get('/user/get', User.getUser)
 
 	//catagory
-	app.get('/categories', User.signinRequired, Category.list);
+	app.get('/categories', Category.list);
 
 	//comment
 	app.post('/user/comment', Comment.save);

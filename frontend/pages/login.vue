@@ -24,8 +24,11 @@ export default({
     methods: {
         async login() {
             if (!this.user.username || !this.user.password) return
-            var result = await this.$store.dispatch('login', {username: this.user.username, password: this.user.password})
+            var result = await this.$store.dispatch('user/login', {username: this.user.username, password: this.user.password})
+            result = result.data
             if (result.success == true) {
+                this.$cookies.set('token', result.token)
+                this.$cookies.set('user', result.user)
                 this.$router.replace('/')
             } else if (result.success == false){
                 this.login_fail = true

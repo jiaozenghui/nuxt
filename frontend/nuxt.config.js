@@ -30,7 +30,8 @@ export default {
   },
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/static/styles/iconfont/iconfont.js', ssr: false}
+    {src: '~/static/styles/iconfont/iconfont.js', ssr: false},
+    {src: "~/plugins/interceptor.js"}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -51,7 +52,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/proxy',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'cookie-universal-nuxt'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -61,7 +63,7 @@ export default {
     baseURL: '/'
   },
   proxy: {
-    '/projects': {
+    '/articles': {
       target: 'http://localhost:3001',
       changeOrigin: true
     },

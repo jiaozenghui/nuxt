@@ -20,13 +20,11 @@ ajax.interceptors.response.use((response) => {
 
 export const actions = {
   async nuxtServerInit({ commit, dispatch }, { req, res, app }) {
-    console.log('session')
-    console.log(res.session)
-    console.log('end')
-    if (req.session && req.session.user) {
+    const token = this.$cookies.get("token")
+    if (token) {
       commit('setData', {
-        key: 'user',
-        value: req.session.user
+        key: 'token',
+        value: token
       })
     }
     await Promise.all([
@@ -37,7 +35,7 @@ export const actions = {
    * category api
    */
   async getCategories({ commit, state }) {
-    const { result } = await ajax.get('/projects', {
+    const { result } = await ajax.get('/articles', {
     })
     commit('setData', {
       key: 'categories',
@@ -49,14 +47,7 @@ export const actions = {
     const result = await ajax.post('/user/signup', body)
     return result
   },
-  async login({ commit, dispatch }, body) {
-    const result = await ajax.post('/user/signin', body)
-    result.success == true &&commit('setData', {
-      key: 'user',
-      value: result.user,
-    })
-    return result
-  },
+
   async logout({ commit }) {
     await ajax.post('/logout')
     // 清除token

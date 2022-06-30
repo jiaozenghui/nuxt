@@ -1,6 +1,7 @@
 
 var User = require('../models/user');
 var path = require('path');
+var Token = require('../middleware/token');
 
 var jsonWrite = function (res, ret) {
   if(typeof ret === 'undefined') {
@@ -99,12 +100,15 @@ exports.signin = function (req, res) {
         });
       }
       if (isMatch) {
-        req.session.user = user;
-        return jsonWrite(res, {
-          'success': true,
-          user: user,
-          'result': 'ok'
-        });
+        Token.setToken(userName,user._id).then((data)=>{
+          return jsonWrite(res, {
+            'success': true,
+            user: user,
+            token: data,
+            'result': 'ok'
+          });
+        })
+
       } else {
         return jsonWrite(res, {
           'success': false,
