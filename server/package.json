@@ -24,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.18",
     "morgan": "~1.9.1",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "ueditor": "^1.2.3"
   }
 }

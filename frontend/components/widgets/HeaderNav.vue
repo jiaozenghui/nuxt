@@ -11,8 +11,8 @@
         <a href="life_diary.html">慢生活</a>
         <a href="qianduanjishu.html">前端技术</a>
         <a href="drawing.html">兴趣爱好</a>
-        <a target="_self"  class="ng-cloak" v-if="token" href="/articles/edit">添加文章</a>
-        <a target="_self"  class="ng-cloak" v-if="token" href="/signout">退出</a>
+        <nuxt-link v-if="token" :to="`/new_article`">添加文章</nuxt-link>
+        <nuxt-link v-if="token" :to="`/new_article`">退出</nuxt-link>
       </div>
       <div class="search_div pull-right">
         <search-input></search-input>
@@ -35,9 +35,9 @@ export default Vue.extend({
     SearchInput
   },
   computed: {
-    ...mapState([
-      'token'
-    ])
+    ...mapState({
+      token : (state:any)=>state.user.token
+  })
   },
 })
 </script>

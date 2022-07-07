@@ -21,10 +21,17 @@ ajax.interceptors.response.use((response) => {
 export const actions = {
   async nuxtServerInit({ commit, dispatch }, { req, res, app }) {
     const token = this.$cookies.get("token")
+    const user = this.$cookies.get("user")
     if (token) {
-      commit('setData', {
+      commit('user/init', {
         key: 'token',
         value: token
+      })
+    }
+    if (user) {
+      commit('user/init', {
+        key: 'user',
+        value: user
       })
     }
     await Promise.all([

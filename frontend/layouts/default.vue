@@ -3,7 +3,9 @@
     <header-nav></header-nav>
     <div class="content">
       <left-side></left-side>
-      <nuxt />
+      <main class="right-side">
+        <nuxt />
+      </main>
     </div>
     <footer-container></footer-container>
   </div>

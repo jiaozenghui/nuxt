@@ -188,7 +188,7 @@ exports.save = function (req, res) {
 //list
 exports.list = function(req, res) {
 	var pageIndex = req.query.pageIndex;
-	var pageSize = req.query.pageSize;
+	var pageSize = req.query.pageSize? req.query.pageSize:10;
 	Article.findList(pageIndex, pageSize,null, {}, function(err, articles) {
 		articles.forEach(function(item) {
 			item.meta.createAt = dateFormatter(item.meta.createAt);

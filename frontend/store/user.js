@@ -4,8 +4,8 @@ export const state =()=>({
 })
 
 export const mutations = {
-    init(state, token) {
-        state.token = token
+    init(state, payload) {
+        state[payload.key] = payload.value
     }
 }
 
@@ -16,13 +16,20 @@ export const getter = {
 }
 
 export const actions = {
-    async login({ commit, getters }, body) {
-        const result = await axios.post('/user/signin', body)
-        result.success == true &&commit('setData', {
-          key: 'user',
-          value: result.user,
+    setToken({ commit, getters }, result) {
+        commit('init', {
+            key: 'user',
+            value: result.user,
         })
-        localStorage.setItem('token', result.token)
-        return result
+        commit('init', {
+            key: 'token',
+            value: result.token,
+        })
+        this.$cookies.set('token', result.token, {
+            maxAge: 60 * 60 * 24 * 1
+        })
+        this.$cookies.set('user', result.user, {
+            maxAge: 60 * 60 * 24 * 1
+        })
     }
 }

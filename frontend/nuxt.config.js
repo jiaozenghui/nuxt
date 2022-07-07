@@ -31,7 +31,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: '~/static/styles/iconfont/iconfont.js', ssr: false},
-    {src: "~/plugins/interceptor.js"}
+    {src: "~/plugins/interceptor.js"},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -68,6 +68,10 @@ export default {
       changeOrigin: true
     },
     '/user': {
+      target: 'http://localhost:3001',
+      changeOrigin: true
+    },
+    '/libs/ueditor/ue': {
       target: 'http://localhost:3001',
       changeOrigin: true
     }

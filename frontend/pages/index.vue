@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="item of categoryFilter" :key="item._id">
+    <div v-for="item of articleList" :key="item._id">
       <span>{{item.title}}</span>
       <p>{{item.abstract}}</p>
     </div>
@@ -8,23 +8,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import {mapActions, mapState} from 'vuex'
-export default Vue.extend({
-  name: 'IndexPage',
-  computed: {
-    ...mapState(['categories']),
-    categoryFilter() {
-      return this.categories
-    },
+export default {
+  data(){
+    return {
+      articleList: []
+    }
   },
-  mounted() {
-    this.getCategories()
-  },
-  methods: {
-    ...mapActions([
-      'getCategories'
-    ])
-  },
-})
+  async asyncData({$axios, route, error}) {
+    const { page = 1, category = '', keywords = '' } = route.query;
+    const res = await $axios.get('articles', {pageIndex:page});
+    if (res.success) {
+      return {
+        articleList: res.result
+      }
+    }
+   error({statusCode:400, message: '查询数据失败！'})
+  }
+}
 </script>

@@ -18,7 +18,7 @@ header h2 { margin: 20px 80px; color: #8e8d8d }
 .logo_div {height: 60px;width: 24%;line-height: 60px;font-size: 22px;color: #555;}
 nav {height: 60px; align-items: center; width: 1200px; margin: 0 auto; display: flex;}
 .content { padding-top: 80px; margin: 0 auto 20px; display: flex; width: 1200px; justify-content: space-between;}
-.right-side{width: 74%;}
+.right-side{width: 74.5%; background: rgba(255,255,255,0.5); padding: 20px 10px; box-sizing: border-box;}
 .left-side{width: 24%;}
 
 ::-webkit-scrollbar-track-piece {
