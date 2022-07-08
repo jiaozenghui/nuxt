@@ -11,7 +11,7 @@
               title="title"
               class="form-control verify-input"
               type="text"
-              ng-model="article.title"
+              v-model="article.title"
               ng-maxlength="255"
               placeholder="请输入文章标题"/>
           </div>
@@ -22,21 +22,10 @@
           </label>
           <div class="form-group-right">
             <label class="radio-inline" ng-repeat= "category in categories">
-              <input type="radio" ng-value="category._id" ng-checked="article.category == category._id" name="category" ng-model="article.category" />{{category.name}}
+              <input type="radio" ng-value="category._id" ng-checked="article.category == category._id" name="category" v-model="article.category" />{{category.name}}
             </label>
           </div>
         </div>
-        <div class="form-group-right clearfix">
-          <label for="title">
-            配图
-          </label>
-          <div class="form-group-right">
-            <label class="radio-inline" >
-              <input type="file" ng-model="article_image" name="f" id="fileupload">
-            </label>
-          </div>
-        </div>
-        
         <div class="form-group-right clearfix">
           <label for="abstract">
             摘要
@@ -49,7 +38,7 @@
               rows="4"
               ng-maxlength="255"
               type="abstract"
-              ng-model="article.abstract"
+              v-model="article.abstract"
               placeholder="请输入文章摘要">
             </textarea>
           </div>
@@ -91,6 +80,8 @@ export default {
     },
     data() {
         return {
+          article: {},
+          categories:[],
           defaultMsg: '',
           ue2: 'ue2',
           config2: {
@@ -122,7 +113,9 @@ export default {
         };
     },
     methods: {
-        onEditorChange(e) { }
+        addArticle() {
+
+        }
     },
     components: { Ueditor }
 }
